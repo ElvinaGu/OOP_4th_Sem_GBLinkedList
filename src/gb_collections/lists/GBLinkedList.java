@@ -46,23 +46,36 @@ public class GBLinkedList<U> implements GBList<U> {
 
     @Override
     public void remove(U value) {
-
+        Iterator<U> iter = iterator();
+        int index = 0;
+        while (iter.hasNext()){
+            if(value.equals(iter.next())){
+                removeByIndex(index);
+                return;
+            }
+            index++;
+        }
     }
 
     @Override
     public void removeByIndex(int index) {
-        GBNode<U> removeLink = head;
             if (index == 0) {
-                head = removeLink.getNext();
+                head = head.getNext();
+                size--;
+                return;
             }
-//        } else if (index == (size-1) {
-//
-//        }
-            else {
-                removeLink.getPrev().setNext(removeLink.getNext());
-                removeLink.getNext().setPrev(removeLink.getPrev());
+
+            int count = 0;
+            GBNode<U> prev = null;
+            GBNode<U> curr = head;
+            while (count != index){
+                prev = curr;
+                curr = curr.getNext();
+                count++;
             }
-        size--;
+
+            prev.setNext(curr.getNext());
+            size--;
     }
 
 

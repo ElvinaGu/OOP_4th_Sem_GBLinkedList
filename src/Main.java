@@ -42,7 +42,7 @@ public class Main {
         r.add(3);
         r.add(53);
         System.out.println(r);
-        r.removeByIndex(2);
+        r.remove(9);
         System.out.println(r);
 
 
